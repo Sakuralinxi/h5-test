@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag and drop</title>
+</head>
+<body>
+    <!-- 拖拽元素要设置draggable属性 -->
+    <div id="dragitem" draggable="true" style="width:200px;height:100px;background-color:red;">drag</div>
+    <div id="dropzone" style="width:400px;height:200px;background-color:blue;">drop</div>
+
+    <script>
+        window.onload = function(){
+            let dropzone = document.querySelector("#dropzone");
+            let dragitem = document.querySelector("#dragitem");
+
+            dragitem.addEventListener("dragstart",function(){
+                console.log("start to drag");
+            });
+
+            dragitem.addEventListener("drag",function(){
+                console.log("dragging");
+            });
+
+            dragitem.addEventListener("dragend",function(){
+                console.log("end to drag");
+            });
+
+            // dragenter和dragover事件的默认行为是拒绝接受任何被拖放的元素。因此，我们必须阻止浏览器这种默认行为。e.preventDefault();
+            dropzone.addEventListener("dragenter",function(){
+                console.log("enter");
+                event.preventDefault();
+            });
+
+            dropzone.addEventListener("dragover",function(){
+                event.preventDefault();
+                console.log("dragover");
+            })
+
+            dropzone.addEventListener("dragleave",function(){
+                console.log("leave");
+            })
+
+            dropzone.addEventListener("drop",function(){
+                event.preventDefault();
+                console.log("drop");
+            })
+        }
+    </script>
+</body>
+</html>
