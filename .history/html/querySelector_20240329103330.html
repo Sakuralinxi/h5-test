@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+ <meta charset=utf-8 />
+ <title>quertSelector</title>
+</head>
+<body>
+    <ul id="test">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script>
+        let ulElement = document.getElementById("test");
+        let list = document.getElementsByTagName("li");
+
+        for(let i = 0;i < list.length;i++){
+            // 动态追加li
+            ulElement.appendChild(document.createElement("li"));
+            console.log(list.length);
+        }
+    </script>
+</body>
+</html>
