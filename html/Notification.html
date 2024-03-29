@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+</head>
+<body>
+    <!-- 遇到了问题，不会弹出通知，目前得知需要将网页部署到服务器，且需支持https协议才行 -->
+    <button id="notificationButtion">按我通知</button>
+
+    <script>
+        button = document.querySelector("#notifucationButton");
+        button.onclick = creatNotification;
+
+        function creatNotification(){
+            // 进行桌面通知之前一定要进行授权
+            Notification.requestPermission(function(){
+                if(permission == 'granted'){
+                    console.log("用户同意了授权，现在可以通知了");
+
+                    let options = {"body":"这是主体内容部分","requireInteraction":false};
+                    let notification = new Notification("这是标题测试",options);
+                }else if(permission == 'Default'){
+                    console.log("用户关闭授权，可重新再试")
+                }else{
+                    console.log("用户拒绝了你的请求")
+                }
+            })
+
+        }
+    </script>
+</body>
+</html>
